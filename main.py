@@ -12,9 +12,12 @@ class Tennis:
             if self.players[self.player_one_name] == 3 and self.players[self.player_two_name] == 3:
                 return 'Deuce'
             else:
-                return '{0} - {1}'.format(
-                    self.__parse_score(self.players[self.player_one_name]),
-                    self.__parse_score(self.players[self.player_two_name]))
+                if self.players[self.player_one_name] == self.players[self.player_two_name]:
+                    return '{0} all'.format(self.__parse_score(self.players[self.player_one_name]))
+                else:
+                    return '{0} - {1}'.format(
+                        self.__parse_score(self.players[self.player_one_name]),
+                        self.__parse_score(self.players[self.player_two_name]))
         except KeyError:
             return self.__special_score()
 

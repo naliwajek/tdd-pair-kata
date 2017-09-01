@@ -1,15 +1,17 @@
 from main import Tennis
 
-def test_new_game():
-    game = Tennis('Dave', 'Seb')
-
-    assert game.score() == 'love - love'
-
 def test_player_one_wins_point():
     game = Tennis('Dave', 'Seb')
     game.won_point('Dave')
 
     assert game.score() == 'fifteen - love'
+
+def test_players_score_equal():
+    game = Tennis('Dave', 'Seb')
+    game.won_point('Dave')
+    game.won_point('Seb')
+
+    assert game.score() == 'fifteen all'
 
 def test_player_two_wins_point():
     game = Tennis('Dave', 'Seb')
