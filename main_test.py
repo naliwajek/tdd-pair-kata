@@ -52,6 +52,18 @@ def test_player_two_wins_game():
 
     assert game.score() == 'Win for Seb'
 
+def test_scoring_after_winning_game():
+    game = Tennis('Dave', 'Seb')
+    game.won_point('Seb')
+    game.won_point('Seb')
+    game.won_point('Seb')
+    game.won_point('Seb')
+
+    assert game.score() == 'Win for Seb'
+
+    with pytest.raises(RuntimeError):
+        game.won_point('Seb')
+
 def test_players_reach_deuce():
     game = Tennis('Dave', 'Seb')
     game.won_point('Seb')

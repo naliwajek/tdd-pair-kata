@@ -4,6 +4,7 @@ class Tennis:
         self.player_two_name = player_two_name
         self.players = {player_one_name: 0, player_two_name: 0}
         self.score_names = {0: 'love', 1: 'fifteen', 2: 'thirty', 3: 'forty'}
+        self.game_over = False
 
     def score(self):
         try:
@@ -20,6 +21,9 @@ class Tennis:
             return self.__special_score()
 
     def won_point(self, player_name):
+        if self.game_over:
+            raise RuntimeError
+
         try:
             self.players[player_name] += 1
         except KeyError:
@@ -51,6 +55,7 @@ class Tennis:
             return 'Deuce'
 
         if abs(self.__point_difference()) >= 2:
+            self.game_over = True
             return self.__game_state_on('Win for', self.__player_one_leads())
 
         return self.__game_state_on('Advantage', self.__player_one_leads())
