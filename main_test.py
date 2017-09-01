@@ -1,5 +1,6 @@
-import main
+from main import Tennis
 
+def test_new_game():
+    game = Tennis('Dave', 'Seb')
 
-def test_answer():
-    assert main.inc(3) == 5
+    assert game.score() == 'love - love'

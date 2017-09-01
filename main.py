@@ -1,6 +1,7 @@
-def inc(x):
-    return x + 1
+class Tennis:
+    def __init__(self, player_one_name, player_two_name):
+        self.player_one_name = player_one_name
+        self.player_two_name = player_two_name
 
-
-def test_in_a_module():
-    assert inc(7) == 9
+    def score(self):
+        return 'love - love'
