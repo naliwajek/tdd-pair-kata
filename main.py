@@ -12,7 +12,7 @@ class Tennis:
             if self.players[self.player_one_name] == 3 and self.players[self.player_two_name] == 3:
                 return 'Deuce'
             else:
-                if self.players[self.player_one_name] == self.players[self.player_two_name]:
+                if self.__scores_are_equal():
                     return '{0} all'.format(self.__parse_score(self.players[self.player_one_name]))
                 else:
                     return '{0} - {1}'.format(
@@ -27,8 +27,11 @@ class Tennis:
     def __parse_score(self, score):
         return self.score_names[score]
 
+    def __scores_are_equal(self):
+        return self.players[self.player_one_name] == self.players[self.player_two_name]
+
     def __special_score(self):
-        if self.players[self.player_one_name] == self.players[self.player_two_name]:
+        if self.__scores_are_equal():
             return 'Deuce'
 
         if abs(self.players[self.player_one_name] - self.players[self.player_two_name]) >= 2:
