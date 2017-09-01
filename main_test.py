@@ -7,7 +7,13 @@ def test_new_game():
 
 def test_player_one_wins_point():
     game = Tennis('Dave', 'Seb')
-
     game.won_point('Dave')
 
     assert game.score() == 'fifteen - love'
+
+def test_player_two_wins_point():
+    game = Tennis('Dave', 'Seb')
+    game.won_point('Seb')
+
+    assert game.score() == 'love - fifteen'
+

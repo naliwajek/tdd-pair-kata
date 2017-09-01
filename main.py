@@ -5,8 +5,10 @@ class Tennis:
         self.player_one_score = 'love'
         self.player_two_score = 'love'
 
+        self.players = {player_one_name: 'love', player_two_name: 'love'}
+
     def score(self):
-        return self.player_one_score + ' - ' + self.player_two_score
+        return self.players['Dave'] + ' - ' + self.players['Seb']
 
     def won_point(self, player_name):
-        self.player_one_score = 'fifteen'
+        self.players[player_name] = 'fifteen'
