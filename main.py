@@ -9,7 +9,7 @@ class Tennis:
 
     def score(self):
         try:
-            if self.players[self.player_one_name] == 3 and self.players[self.player_two_name] == 3:
+            if self.__is_first_deuce():
                 return 'Deuce'
             else:
                 if self.__scores_are_equal():
@@ -32,6 +32,9 @@ class Tennis:
 
     def __scores_are_equal(self):
         return self.players[self.player_one_name] == self.players[self.player_two_name]
+
+    def __is_first_deuce(self):
+        return self.players[self.player_one_name] == 3 and self.players[self.player_two_name] == 3
 
     def __special_score(self):
         if self.__scores_are_equal():
