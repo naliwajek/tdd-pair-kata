@@ -33,3 +33,7 @@ class Tennis:
                 return 'Win for Dave'
             else:
                 return 'Win for Seb'
+
+
+        return 'Advantage Dave'
+
