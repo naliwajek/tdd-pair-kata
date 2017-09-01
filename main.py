@@ -25,8 +25,11 @@ class Tennis:
         return self.score_names[score]
 
     def __special_score(self):
-        if self.players[self.player_one_name] > 3:
-            return 'Win for Dave'
-        else:
-            return 'Win for Seb'
+        if self.players[self.player_one_name] == self.players[self.player_two_name]:
+            return 'Deuce'
 
+        if abs(self.players[self.player_one_name] - self.players[self.player_two_name]) >= 2:
+            if self.players[self.player_one_name] > self.players[self.player_two_name]:
+                return 'Win for Dave'
+            else:
+                return 'Win for Seb'
