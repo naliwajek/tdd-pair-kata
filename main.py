@@ -5,3 +5,6 @@ class Tennis:
 
     def score(self):
         return 'love - love'
+
+    def won_point(self, player_name):
+        return self.score()
