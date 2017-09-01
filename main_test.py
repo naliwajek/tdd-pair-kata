@@ -66,3 +66,22 @@ def test_player_one_gets_advantage():
 
     assert game.score() == 'Advantage Dave'
 
+def test_game():
+    game = Tennis('Dave', 'Seb')
+    game.won_point('Seb')
+    game.won_point('Seb')
+    game.won_point('Seb')
+    game.won_point('Dave')
+    game.won_point('Dave')
+    game.won_point('Dave')
+    assert game.score() == 'Deuce'
+    game.won_point('Seb')
+    assert game.score() == 'Advantage Seb'
+    game.won_point('Dave')
+    assert game.score() == 'Deuce'
+    game.won_point('Dave')
+    assert game.score() == 'Advantage Dave'
+    game.won_point('Dave')
+    assert game.score() == 'Win for Dave'
+
+
