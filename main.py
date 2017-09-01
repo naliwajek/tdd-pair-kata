@@ -34,6 +34,8 @@ class Tennis:
             else:
                 return 'Win for Seb'
 
-
-        return 'Advantage Dave'
+        if self.players[self.player_one_name] > self.players[self.player_two_name]:
+            return 'Advantage Dave'
+        else:
+            return 'Advantage Seb'
 
