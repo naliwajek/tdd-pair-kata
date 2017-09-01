@@ -27,6 +27,9 @@ class Tennis:
     def __parse_score(self, score):
         return self.score_names[score]
 
+    def __point_difference(self):
+        return self.players[self.player_one_name] - self.players[self.player_two_name]
+
     def __scores_are_equal(self):
         return self.players[self.player_one_name] == self.players[self.player_two_name]
 
@@ -34,13 +37,13 @@ class Tennis:
         if self.__scores_are_equal():
             return 'Deuce'
 
-        if abs(self.players[self.player_one_name] - self.players[self.player_two_name]) >= 2:
-            if self.players[self.player_one_name] > self.players[self.player_two_name]:
+        if abs(self.__point_difference()) >= 2:
+            if self.__point_difference() > 0:
                 return 'Win for Dave'
             else:
                 return 'Win for Seb'
 
-        if self.players[self.player_one_name] > self.players[self.player_two_name]:
+        if self.__point_difference() > 0:
             return 'Advantage Dave'
         else:
             return 'Advantage Seb'
