@@ -3,11 +3,17 @@ class Tennis:
         self.player_one_name = player_one_name
         self.player_two_name = player_two_name
         self.players = {player_one_name: 0, player_two_name: 0}
-        self.score_names = {0: 'love', 1: 'fifteen', 2: 'thirty', 3: 'fourty'}
+        self.score_names = {0: 'love', 1: 'fifteen', 2: 'thirty', 3: 'forty'}
 
     def score(self):
-        return '{0} - {1}'.format(self.__parse_score(self.players[self.player_one_name]),
-            self.__parse_score(self.players[self.player_two_name]))
+        try:
+            return '{0} - {1}'.format(self.__parse_score(self.players[self.player_one_name]),
+                self.__parse_score(self.players[self.player_two_name]))
+        except KeyError:
+            if self.players[self.player_one_name] > 3:
+                return 'Win for Dave'
+            else:
+                return 'Win for Seb'
 
     def won_point(self, player_name):
         self.players[player_name] += 1

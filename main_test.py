@@ -25,3 +25,21 @@ def test_player_one_wins_another_point():
 
     assert game.score() == 'thirty - fifteen'
 
+def test_player_one_wins_game():
+    game = Tennis('Dave', 'Seb')
+    game.won_point('Dave')
+    game.won_point('Dave')
+    game.won_point('Dave')
+    game.won_point('Dave')
+
+    assert game.score() == 'Win for Dave'
+
+def test_player_two_wins_game():
+    game = Tennis('Dave', 'Seb')
+    game.won_point('Seb')
+    game.won_point('Seb')
+    game.won_point('Seb')
+    game.won_point('Seb')
+
+    assert game.score() == 'Win for Seb'
+
