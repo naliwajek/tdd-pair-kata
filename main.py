@@ -7,8 +7,12 @@ class Tennis:
 
     def score(self):
         try:
-            return '{0} - {1}'.format(self.__parse_score(self.players[self.player_one_name]),
-                self.__parse_score(self.players[self.player_two_name]))
+            if self.players[self.player_one_name] == 3 and self.players[self.player_two_name] == 3:
+                return 'Deuce'
+            else:
+                return '{0} - {1}'.format(
+                    self.__parse_score(self.players[self.player_one_name]),
+                    self.__parse_score(self.players[self.player_two_name]))
         except KeyError:
             if self.players[self.player_one_name] > 3:
                 return 'Win for Dave'

@@ -43,3 +43,14 @@ def test_player_two_wins_game():
 
     assert game.score() == 'Win for Seb'
 
+def test_players_reach_deuce():
+    game = Tennis('Dave', 'Seb')
+    game.won_point('Seb')
+    game.won_point('Seb')
+    game.won_point('Seb')
+    game.won_point('Dave')
+    game.won_point('Dave')
+    game.won_point('Dave')
+
+    assert game.score() == 'Deuce'
+
