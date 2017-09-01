@@ -9,13 +9,13 @@ class Tennis:
         try:
             if self.__is_first_deuce():
                 return 'Deuce'
-            else:
-                if self.__scores_are_equal():
-                    return '{0} all'.format(self.__parse_score_for(self.player_one_name))
-                else:
-                    return '{0} - {1}'.format(
-                        self.__parse_score_for(self.player_one_name),
-                        self.__parse_score_for(self.player_two_name))
+
+            if self.__scores_are_equal():
+                return '{0} all'.format(self.__parse_score_for(self.player_one_name))
+
+            return '{0} - {1}'.format(
+                self.__parse_score_for(self.player_one_name),
+                self.__parse_score_for(self.player_two_name))
         except KeyError:
             return self.__special_score()
 
@@ -37,18 +37,18 @@ class Tennis:
     def __is_first_deuce(self):
         return self.players[self.player_one_name] == 3 and self.players[self.player_two_name] == 3
 
+    def __game_state_on(self, state, condition):
+        return '{0} {1}'.format(state, self.player_one_name if condition else self.player_two_name)
+
+    def __player_one_leads(self):
+        return self.__point_difference() > 0
+
     def __special_score(self):
         if self.__scores_are_equal():
             return 'Deuce'
 
         if abs(self.__point_difference()) >= 2:
-            if self.__point_difference() > 0:
-                return 'Win for Dave'
-            else:
-                return 'Win for Seb'
+            return self.__game_state_on('Win for', self.__player_one_leads())
 
-        if self.__point_difference() > 0:
-            return 'Advantage Dave'
-        else:
-            return 'Advantage Seb'
+        return self.__game_state_on('Advantage', self.__player_one_leads())
 
