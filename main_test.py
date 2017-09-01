@@ -1,4 +1,11 @@
 from main import Tennis
+import pytest
+
+def test_unknown_player():
+    game = Tennis('Dave', 'Seb')
+
+    with pytest.raises(ValueError):
+        game.won_point('Chris')
 
 def test_player_one_wins_point():
     game = Tennis('Dave', 'Seb')

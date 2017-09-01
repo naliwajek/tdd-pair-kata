@@ -20,7 +20,10 @@ class Tennis:
             return self.__special_score()
 
     def won_point(self, player_name):
-        self.players[player_name] += 1
+        try:
+            self.players[player_name] += 1
+        except KeyError:
+            raise ValueError
 
     def __parse_score_for(self, player_name):
         return self.__parse_score(self.players[player_name])
